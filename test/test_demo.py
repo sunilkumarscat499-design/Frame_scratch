@@ -20,4 +20,5 @@ def test_dropdown_currency(page):
     # page.get_by_role("button", name="EUR").click()
     obj = LandingPage(page)
     obj.select_currency()
+    #add test
     expect(obj.get_currency_symbol).to_have_text("€")
