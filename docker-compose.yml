@@ -1,0 +1,16 @@
+services:
+  playwright-tests:
+    # STEP 1: Tell Compose where the Dockerfile is
+    build: .
+
+    # STEP 2: Map your local "reports" folder to the container's "reports" folder
+    # This ensures screenshots/videos appear on your computer instantly
+    volumes:
+      - ./reports:/app/reports
+
+    # STEP 3: Environment variables (Optional but helpful for FastAPI/Playwright)
+    environment:
+      - PYTHONUNBUFFERED=1
+
+    # STEP 4: Override the default command if you want to pass specific pytest args
+    command: pytest --alluredir=reports/allure-results --video on --screenshot on
