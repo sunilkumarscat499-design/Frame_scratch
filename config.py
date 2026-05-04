@@ -28,3 +28,6 @@
 #         "google": "https://www.google.com/",
 #     }
 # }
+
+class Config:
+    Base_url1 = "https://testautomationpractice.blogspot.com/"

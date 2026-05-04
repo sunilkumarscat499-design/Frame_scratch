@@ -1,0 +1,3 @@
+name,email,phone
+Valid login,pavanol@abc.com,12345
+Invalid login,abcxyz@xyz.com,12345
