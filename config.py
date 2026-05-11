@@ -28,3 +28,6 @@
 #         "google": "https://www.google.com/",
 #     }
 # }
+data_login = {"userEmail": "sunilkumarscat499@gmail.com", "userPassword": "Arjith@123"}
+url_token = "https://rahulshettyacademy.com/api/ecom/auth/login"
+base_url = "https://rahulshettyacademy.com"

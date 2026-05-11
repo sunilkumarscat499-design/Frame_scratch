@@ -1,7 +1,8 @@
 import pytest
 import allure
 from pathlib import Path
-from playwright.sync_api import sync_playwright
+from playwright.sync_api import sync_playwright,Playwright
+import config
 
 # ========================================================================
 # PYTEST + PLAYWRIGHT TEST CONFIGURATION FILE
@@ -195,4 +196,27 @@ def page(request, browser_context):
                 attachment_type=allure.attachment_type.WEBM
             )
             print("[ATTACH] Video attached to Allure report")
+
+#------------------------------------------------------------------
+#implementing access token to fetch
+#----------------------------------------------------
+@pytest.fixture(scope = "session")
+def get_token():
+    playwright = sync_playwright().start()
+    request_context = playwright.request.new_context()
+    response = request_context.post(url=config.url_token,
+                                    headers={"Content-Type":"application/json"},
+                                    data=config.data_login)
+    json_response = response.json()
+    token = json_response["token"]
+    yield token,request_context
+    request_context.dispose()
+    playwright.stop()
+
+
+
+
+
+
+
 
